@@ -1,37 +1,14 @@
 {% extends 'base.html' %}
-{% load static %}
 
 {% block title %}Lista de Lançamentos{% endblock %}
 
 {% block content %}
 <div class="flex justify-between items-center mb-6">
     <h1 class="text-xl font-bold">📊 Lançamentos</h1>
-    <a href="{% url 'lancamentos:adicionar' %}" class="btn btn-primary">Adicionar Novo</a>
+    <a href="/lancamentos/adicionar/" class="btn btn-primary">Adicionar Novo</a>
 </div>
 
-{# --- VISUALIZAÇÃO EM CARDS PARA MOBILE --- #}
-<div class="mobile-cards show-mobile">
-    {% for lancamento in lancamentos %}
-    <div class="mobile-card {% if lancamento.tipo == 'entrada' %}border-success{% else %}border-danger{% endif %}">
-        <div class="mobile-card-header">
-            <span class="mobile-card-date">{{ lancamento.data|date:"d/m/Y" }}</span>
-            <span class="mobile-card-type {{ lancamento.tipo }}">{{ lancamento.get_tipo_display }}</span>
-        </div>
-        <p class="mobile-card-description">{{ lancamento.descricao }}</p>
-        <div class="mobile-card-value {% if lancamento.tipo == 'entrada' %}positive{% else %}negative{% endif %}">
-            {% if lancamento.tipo == 'entrada' %}+{% else %}-{% endif %} R$ {{ lancamento.valor|floatformat:2 }}
-        </div>
-        <div class="mobile-card-actions">
-            <a href="{% url 'lancamentos:editar' pk=lancamento.pk %}" class="mobile-card-btn edit">Editar</a>
-            <a href="{% url 'lancamentos:deletar' pk=lancamento.pk %}" class="mobile-card-btn delete">Excluir</a>
-        </div>
-    </div>
-    {% empty %}
-        <p class="text-center text-secondary">Nenhum lançamento encontrado.</p>
-    {% endfor %}
-</div>
-
-{# --- TABELA TRADICIONAL PARA DESKTOP --- #}
+<!-- Tabela para Desktop -->
 <div class="card show-desktop">
     <div class="table-container">
         <table class="table">
@@ -54,8 +31,8 @@
                         {% if lancamento.tipo == 'entrada' %}+{% else %}-{% endif %} R$ {{ lancamento.valor|floatformat:2 }}
                     </td>
                     <td>
-                        <a href="{% url 'lancamentos:editar' pk=lancamento.pk %}" class="btn btn-warning btn-sm">Editar</a>
-                        <a href="{% url 'lancamentos:deletar' pk=lancamento.pk %}" class="btn btn-danger btn-sm">Excluir</a>
+                        <a href="/lancamentos/editar/{{ lancamento.pk }}/" class="btn btn-warning btn-sm">Editar</a>
+                        <a href="/lancamentos/deletar/{{ lancamento.pk }}/" class="btn btn-danger btn-sm">Excluir</a>
                     </td>
                 </tr>
                 {% empty %}

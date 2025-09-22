@@ -1,0 +1,74 @@
+{% extends 'base.html' %}
+
+{% block title %}Dashboard - Cantina Financeira{% endblock %}
+
+{% block content %}
+<div class="flex justify-between items-center mb-6">
+    <div>
+        <h1 class="text-xl font-bold">🏠 Dashboard</h1>
+        <p class="text-sm text-secondary">
+            Bem-vindo! Esta é sua página inicial.
+        </p>
+    </div>
+</div>
+
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-6">
+    <div class="card">
+        <div class="card-body text-center">
+            <div class="text-2xl font-bold text-success">R$ 0,00</div>
+            <div class="text-sm text-secondary">Total Entradas (Período)</div>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-body text-center">
+            <div class="text-2xl font-bold text-danger">R$ 0,00</div>
+            <div class="text-sm text-secondary">Total Saídas (Período)</div>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-body text-center">
+            <div class="text-2xl font-bold">R$ 0,00</div>
+            <div class="text-sm text-secondary">Saldo do Período</div>
+        </div>
+    </div>
+</div>
+
+<div class="card">
+    <div class="card-header">
+        <h2 class="card-title">Últimos Lançamentos</h2>
+    </div>
+    <div class="table-container">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Data</th>
+                    <th>Descrição</th>
+                    <th>Valor</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for lancamento in ultimos_lancamentos %}
+                <tr>
+                    <td>{{ lancamento.data|date:"d/m/Y" }}</td>
+                    <td>{{ lancamento.descricao }}</td>
+                    <td class="font-semibold {% if lancamento.tipo == 'entrada' %}text-success{% else %}text-danger{% endif %}">
+                        {% if lancamento.tipo == 'entrada' %}+{% else %}-{% endif %}R$ {{ lancamento.valor|floatformat:2 }}
+                    </td>
+                </tr>
+                {% empty %}
+                <tr>
+                    <td colspan="3" class="text-center text-secondary">
+                        Nenhum lançamento recente.
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    <div class="card-body text-right">
+        <a href="/lancamentos/" class="btn btn-outline btn-sm">
+            Ver todos os lançamentos →
+        </a>
+    </div>
+</div>
+{% endblock %}

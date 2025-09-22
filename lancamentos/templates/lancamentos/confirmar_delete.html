@@ -14,7 +14,7 @@
         <form method="post">
             {% csrf_token %}
             <div class="flex justify-center gap-4">
-                <a href="{% url 'lancamentos:lista' %}" class="btn btn-secondary">Cancelar</a>
+                <a href="/lancamentos/" class="btn btn-secondary">Cancelar</a>
                 <button type="submit" class="btn btn-danger">Sim, excluir</button>
             </div>
         </form>

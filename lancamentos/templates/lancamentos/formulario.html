@@ -13,11 +13,12 @@
         <form method="post">
             {% csrf_token %}
             
-            {# Renderiza os campos do formulário. Adicione classes CSS se necessário. #}
-            {{ form.as_p }}
+            <div class="form-container">
+                {{ form.as_p }}
+            </div>
 
-            <div class="flex justify-end gap-4 mt-6">
-                <a href="{% url 'lancamentos:lista' %}" class="btn btn-secondary">Cancelar</a>
+            <div class="form-actions">
+                <a href="/lancamentos/" class="btn btn-outline">Cancelar</a>
                 <button type="submit" class="btn btn-primary">Salvar</button>
             </div>
         </form>

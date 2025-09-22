@@ -1,4 +1,5 @@
-from django.shortcuts import render
+from django.views.generic import TemplateView
 
-# Create your views here.
-
+# Adicione esta classe
+class HomeView(TemplateView):
+    template_name = 'home/dashboard.html' # Vamos criar este template
