@@ -39,10 +39,10 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     
     'home.apps.HomeConfig',
-    'lancamentos.app.LancamentosConfig',
-    'cofrinhos.app.CofrinhosConfig',
-    'relatorios.app.RelatoriosConfig',
-    'cartoes.app.CartoesConfig',
+    'lancamentos.apps.LancamentosConfig',
+    'cofrinhos.apps.CofrinhosConfig',
+    'relatorios.apps.RelatoriosConfig',
+    'cartoes.apps.CartoesConfig',
     
 ]
 
