@@ -40,7 +40,7 @@ INSTALLED_APPS = [
     
     'home.apps.HomeConfig',
     'lancamentos.apps.LancamentosConfig',
-    'cofrinhos.apps.CofrinhosConfig',
+    'reservas.apps.ReservasConfig',
     'relatorios.apps.RelatoriosConfig',
     'cartoes.apps.CartoesConfig',
     
