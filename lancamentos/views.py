@@ -17,6 +17,19 @@ class LancamentoCreateView(CreateView):
     template_name = 'lancamentos/formulario.html'
     success_url = reverse_lazy('lancamentos:lista')
 
+    def form_valid(self, form):
+        """ metodo chamado quando o formulario passa OK (valid) """
+        lancamento = form.save(commit=False)
+
+        if lancamento.tipo == 'saida' and lancamento.metodo_pagamento == 'cartao_credito':
+            lancamento.pago = False
+        else:
+            lancamento.pago = True
+
+        lancamento.save()
+
+        return super().form_valid(form)
+
 class LancamentoUpdateView(UpdateView):
     """View para editar um lançamento existente."""
     model = Lancamento

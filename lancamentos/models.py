@@ -12,8 +12,10 @@ class Lancamento(models.Model):
         ("cartao_credito", "Cartão de Crédito"),
         ("cartao_debito", "Cartão de Débito"),
         ("transferencia_interna", "Transferência Interna"),
+        # em breve fiado (caderno)
     ]
 
+    
     descricao = models.CharField(max_length=255)
     tipo = models.CharField(max_length=10, choices=TIPO_CHOICES)
     valor = models.DecimalField(max_digits=10, decimal_places=2)
@@ -44,8 +46,10 @@ class Lancamento(models.Model):
     # ---------------------------------
 
     metodo_pagamento = models.CharField(max_length=100, choices=PAGAMENTO_CHOICES)
-    pago = models.BooleanField(default=True, help_text="Indica se uma despesa já foi quitada")
     observacoes = models.TextField(blank=True, null=True)
+    pago = models.BooleanField(default=True, help_text="Indica se a transação afetou o caixa imediatamente")
+
+    
 
     class Meta:
         ordering = ['-data', '-id']

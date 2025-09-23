@@ -1,0 +1,69 @@
+# Arquivos de Bytecode do Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Arquivos de Banco de Dados
+*.sqlite3
+db.sqlite3
+*.db
+
+# Ambiente Virtual
+# A pasta do seu venv. Se você usou um nome diferente, mude aqui.
+venv/
+.venv/
+env/
+.env/
+ENV/
+
+# Arquivos de Configuração de IDEs e Editores
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# Arquivos de Sistema Operacional
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Arquivos de Log
+*.log
+logs/
+
+# Arquivos de Mídia do Usuário
+# A pasta onde o Django guarda os arquivos que os usuários fazem upload.
+# É importante não versionar isso, pois pode conter dados sensíveis e crescer muito.
+media/
+
+# Arquivos Estáticos Coletados
+# A pasta onde o `collectstatic` junta todos os arquivos para produção.
+# Não precisamos versionar isso, pois é gerado a partir dos arquivos estáticos dos apps.
+staticfiles/
+
+# Arquivos de Cobertura de Testes
+.coverage
+.coverage.*
+htmlcov/
+
+# Arquivos de Dependências do Python (gerados localmente)
+*.egg-info/
+dist/
+build/
+*.egg
+
+# Arquivos de Segredos e Variáveis de Ambiente
+# NUNCA versione arquivos que contêm senhas, chaves de API, etc.
+.env
+.env.*
+*.env
+secrets.py
+local_settings.py
+
+# Arquivos do Jupyter Notebook (se usar)
+.ipynb_checkpoints
+
+# Arquivos do SASS/SCSS (se usar)
+.sass-cache/
+.node-sass/

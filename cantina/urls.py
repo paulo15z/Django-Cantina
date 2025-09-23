@@ -31,6 +31,6 @@ urlpatterns = [
 
    # path('relatorios/', include('relatorios.urls', namespace='relatorios')),
 
-  #  path('gerenciar/', include('home.urls', namespace='home_gerencia')),
+    path('gerenciar/', include('home.urls', namespace='gerenciar')),
 
 ]

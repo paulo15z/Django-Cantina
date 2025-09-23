@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% block title %}Gerenciar Categorias{% endblock %}
+{% block content %}
+<div class="flex justify-between items-center mb-6">
+    <h1 class="text-xl font-bold">🏦 Gerenciar Categorias</h1>
+    <a href="{% url 'gerenciar:adicionar_categoria' %}" class="btn btn-primary">Adicionar Categoria</a>
+</div>
+<div class="card">
+    <div class="table-container">
+        <table class="table">
+            <thead><tr><th>Nome</th><th>Descrição</th><th>Ações</th></tr></thead>
+            <tbody>
+                {% for item in categorias %}
+                <tr>
+                    <td>{{ item.nome }}</td>
+                    <td>{{ item.descricao|default:"-" }}</td>
+                    <td>
+                        <a href="{% url 'gerenciar:editar_categoria' pk=item.pk %}" class="btn btn-warning btn-sm">Editar</a>
+                        <a href="{% url 'gerenciar:deletar_categoria' pk=item.pk %}" class="btn btn-danger btn-sm">Excluir</a>
+                    </td>
+                </tr>
+                {% empty %}
+                <tr><td colspan="3" class="text-center text-secondary">Nenhuma categoria cadastrada.</td></tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}

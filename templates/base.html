@@ -39,6 +39,12 @@
                     <a href="{% url 'reservas:lista' %}" class="nav-link {% if 'reservas' in request.path %}active{% endif %}">
                         💰 Reservas
                     </a>
+                    <a href="{% url 'gerenciar:lista_categorias' %}" class="nav-link {% if 'categorias' in request.path %}active{% endif %}">
+                        🏦 Categorias
+                    </a>
+                    <a href="{% url 'gerenciar:lista_fornecedores' %}" class="nav-link {% if 'fornecedores' in request.path %}active{% endif %}">
+                        🏢 Fornecedores
+                    </a>
                     
                     <!-- Futuros links para outros apps (ex: Relatórios ) serão adicionados aqui -->
                 </nav>

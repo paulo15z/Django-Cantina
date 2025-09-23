@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block title %}Confirmar Exclusão{% endblock %}
+{% block content %}
+<div class="card max-w-lg mx-auto text-center">
+    <div class="card-header"><h1 class="card-title">Confirmar Exclusão</h1></div>
+    <div class="card-body">
+        <p class="mb-6">Você tem certeza que deseja excluir o item <strong>"{{ object.nome }}"</strong>?</p>
+        <form method="post">
+            {% csrf_token %}
+            <div class="flex justify-center gap-4">
+                <a href="{{ request.META.HTTP_REFERER|default:'/' }}" class="btn btn-secondary">Cancelar</a>
+                <button type="submit" class="btn btn-danger">Sim, excluir</button>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}

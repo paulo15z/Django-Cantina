@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% block title %}Gerenciar Fornecedores{% endblock %}
+{% block content %}
+<div class="flex justify-between items-center mb-6">
+    <h1 class="text-xl font-bold">🏢 Gerenciar Fornecedores</h1>
+    <a href="{% url 'gerenciar:adicionar_fornecedor' %}" class="btn btn-primary">Adicionar Fornecedor</a>
+</div>
+<div class="card">
+    <div class="table-container">
+        <table class="table">
+            <thead><tr><th>Nome</th><th>Contato</th><th>Ações</th></tr></thead>
+            <tbody>
+                {% for item in fornecedores %}
+                <tr>
+                    <td>{{ item.nome }}</td>
+                    <td>{{ item.contato|default:"-" }}</td>
+                    <td>
+                        <a href="{% url 'gerenciar:editar_fornecedor' pk=item.pk %}" class="btn btn-warning btn-sm">Editar</a>
+                        <a href="{% url 'gerenciar:deletar_fornecedor' pk=item.pk %}" class="btn btn-danger btn-sm">Excluir</a>
+                    </td>
+                </tr>
+                {% empty %}
+                <tr><td colspan="3" class="text-center text-secondary">Nenhum fornecedor cadastrado.</td></tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}
