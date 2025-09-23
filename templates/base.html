@@ -17,8 +17,7 @@
     <header class="header">
         <div class="container">
             <div class="header-content">
-                <!-- Link para a raiz do site -->
-                <a href="/" class="logo">💰 Cantina Financeira</a>
+                <a href="{% url 'home' %}" class="logo">💰 Cantina Financeira</a>
                 
                 <button class="hamburger" id="hamburger" aria-label="Menu de navegação" aria-expanded="false">
                     <span></span><span></span><span></span>
@@ -26,16 +25,22 @@
 
                 <div class="nav-overlay" id="navOverlay"></div>
 
-                <!-- Navegação simplificada com links diretos para evitar erros -->
+                <!-- Navegação com URLs dinâmicas do Django -->
                 <nav class="nav" id="nav" role="navigation" aria-label="Menu principal">
-                    <a href="/" class="nav-link {% if request.path == '/' %}active{% endif %}">
+                    <a href="{% url 'home' %}" class="nav-link {% if request.path == '/' %}active{% endif %}">
                         🏠 Dashboard
                     </a>
-                    <a href="/lancamentos/" class="nav-link {% if 'lancamentos' in request.path %}active{% endif %}">
+                    <a href="{% url 'lancamentos:lista' %}" class="nav-link {% if 'lancamentos' in request.path %}active{% endif %}">
                         📊 Lançamentos
                     </a>
+                    <a href="{% url 'cartoes:lista' %}" class="nav-link {% if 'cartoes' in request.path %}active{% endif %}">
+                        💳 Cartões
+                    </a>
+                    <a href="{% url 'reservas:lista' %}" class="nav-link {% if 'reservas' in request.path %}active{% endif %}">
+                        💰 Reservas
+                    </a>
                     
-                    <!-- Futuros links para outros apps serão adicionados aqui -->
+                    <!-- Futuros links para outros apps (ex: Relatórios ) serão adicionados aqui -->
                 </nav>
             </div>
         </div>
@@ -54,7 +59,7 @@
     </main>
 
     <script>
-        // Seu JavaScript do menu hambúrguer (inalterado )
+        // Seu JavaScript do menu hambúrguer (inalterado)
         document.addEventListener('DOMContentLoaded', function() {
             const hamburger = document.getElementById('hamburger');
             const nav = document.getElementById('nav');

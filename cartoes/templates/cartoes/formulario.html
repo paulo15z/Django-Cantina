@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block title %}{% if object %}Editar Cartão{% else %}Adicionar Cartão{% endif %}{% endblock %}
+
+{% block content %}
+<div class="card max-w-2xl mx-auto">
+    <div class="card-header">
+        <h1 class="card-title">
+            {% if object %}Editar Cartão de Crédito{% else %}Adicionar Novo Cartão{% endif %}
+        </h1>
+    </div>
+    <div class="card-body">
+        <form method="post">
+            {% csrf_token %}
+            <div class="form-container">
+                {{ form.as_p }}
+            </div>
+            <div class="form-actions">
+                <a href="{% url 'cartoes:lista' %}" class="btn btn-outline">Cancelar</a>
+                <button type="submit" class="btn btn-primary">Salvar</button>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}

@@ -25,9 +25,9 @@ urlpatterns = [
 
     path('lancamentos/', include('lancamentos.urls', namespace='lancamentos')),
 
-    #path('cofrinhos/', include('cofrinhos.urls', namespace='cofrinhos')),
+    path('reservas/', include('reservas.urls', namespace='reservas')),
 
-   # path('cartoes/', include('cartoes.urls', namespace='cartoes')),
+    path('cartoes/', include('cartoes.urls', namespace='cartoes')),
 
    # path('relatorios/', include('relatorios.urls', namespace='relatorios')),
 

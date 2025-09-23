@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+{% block title %}Minhas Reservas{% endblock %}
+
+{% block content %}
+<div class="flex justify-between items-center mb-6">
+    <h1 class="text-xl font-bold">💰 Minhas Reservas</h1>
+    <a href="{% url 'reservas:adicionar' %}" class="btn btn-primary">Criar Nova Reserva</a>
+</div>
+
+<div class="card">
+    <div class="table-container">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Nome da Reserva</th>
+                    <th>Objetivo</th>
+                    <th>Meta</th>
+                    <th>Ações</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for reserva in reservas %}
+                <tr>
+                    <td>{{ reserva.nome }}</td>
+                    <td>{{ reserva.objetivo|truncatewords:10 }}</td>
+                    <td>R$ {{ reserva.meta|floatformat:2 }}</td>
+                    <td>
+                        <a href="{% url 'reservas:editar' pk=reserva.pk %}" class="btn btn-warning btn-sm">Editar</a>
+                        <a href="{% url 'reservas:deletar' pk=reserva.pk %}" class="btn btn-danger btn-sm">Excluir</a>
+                    </td>
+                </tr>
+                {% empty %}
+                <tr>
+                    <td colspan="4" class="text-center text-secondary">Nenhuma reserva criada.</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}
