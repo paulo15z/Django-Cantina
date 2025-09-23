@@ -67,3 +67,4 @@ local_settings.py
 # Arquivos do SASS/SCSS (se usar)
 .sass-cache/
 .node-sass/
+db.sqlite3
