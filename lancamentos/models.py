@@ -49,8 +49,6 @@ class Lancamento(models.Model):
     observacoes = models.TextField(blank=True, null=True)
     pago = models.BooleanField(default=True, help_text="Indica se a transação afetou o caixa imediatamente")
 
-    
-
     class Meta:
         ordering = ['-data', '-id']
 
